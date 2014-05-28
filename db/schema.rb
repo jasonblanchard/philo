@@ -11,9 +11,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 20140528120839) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "videos", force: true do |t|
+    t.string   "title"
+    t.string   "media_provider"
+    t.string   "media_url"
+    t.string   "source_provider"
+    t.string   "source_url"
+    t.text     "info"
+    t.datetime "date_posted"
+    t.boolean  "nsfw"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "videos", ["media_provider"], name: "index_videos_on_media_provider", using: :btree
+  add_index "videos", ["source_provider"], name: "index_videos_on_source_provider", using: :btree
 
 end
