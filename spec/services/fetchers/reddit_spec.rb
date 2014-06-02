@@ -30,5 +30,9 @@ describe Fetchers::Reddit do
       expect(v.date_posted).to eq DateTime.strptime("1401249726",'%s')
       expect(v.nsfw).to eq false
     end
+
+    it 'does not add the video object if it already exists' do
+      skip
+    end
   end
 end
