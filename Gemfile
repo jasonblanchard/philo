@@ -49,3 +49,4 @@ group :test do
 end
 
 gem 'httparty'
+gem "active_model_serializers"
