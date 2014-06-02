@@ -9,7 +9,11 @@ module Fetchers
       HTTParty.get(url).parsed_response
     end
 
-    def self.create_videos!
+    def self.source_provider
+      'Reddit'
+    end
+
+    def self.fetch_and_create_videos!
       data = self.data
 
       data['data']['children'].each do |entry|

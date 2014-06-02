@@ -13,9 +13,9 @@ describe Fetchers::Reddit do
     end
   end
 
-  describe '.create_videos!' do
+  describe '.fetch_and_create_videos!' do
     it 'builds video objects' do
-      Fetchers::Reddit.create_videos!
+      Fetchers::Reddit.fetch_and_create_videos!
 
       expect(Video.all.count).to eq 2
 
