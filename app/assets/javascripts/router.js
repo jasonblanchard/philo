@@ -2,6 +2,6 @@
 
 Philo.Router.map(function() {
   this.resource('videos', function() {
-    this.resource('book', {path: '/:video_id'});
+    this.resource('video', {path: '/:video_id'});
   });
 });
