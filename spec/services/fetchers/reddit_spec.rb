@@ -32,7 +32,9 @@ describe Fetchers::Reddit do
     end
 
     it 'does not add the video object if it already exists' do
-      skip
+      Fetchers::Reddit.fetch_and_create_videos!
+      Fetchers::Reddit.fetch_and_create_videos!
+      expect(Video.all.count).to eq 2
     end
   end
 end

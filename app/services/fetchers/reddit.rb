@@ -30,7 +30,9 @@ module Fetchers
           nsfw = video['over_18']
           source_id = video['id']
 
-          Video.create!(info: info, title: title, media_provider: media_provider, media_url: media_url, source_provider: source_provider, source_url: source_url, date_posted: date_posted, nsfw: nsfw, source_id: source_id)
+          unless Video.by_source_id(source_id).first
+            Video.create!(info: info, title: title, media_provider: media_provider, media_url: media_url, source_provider: source_provider, source_url: source_url, date_posted: date_posted, nsfw: nsfw, source_id: source_id)
+          end
         end
       end
     end
