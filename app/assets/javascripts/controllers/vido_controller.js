@@ -1,4 +1,5 @@
 Philo.VideoController = Ember.ObjectController.extend({
+
   youtubeId: function() {
     var mediaUrl = this.get('mediaUrl');
     var id;
@@ -9,5 +10,10 @@ Philo.VideoController = Ember.ObjectController.extend({
     };
 
     return id;
-  }.property('mediaUrl')
+  }.property('mediaUrl'),
+
+  youtubeSrc: function() {
+    return "http://www.youtube.com/embed/" + this.get('youtubeId')  + "?enablejsapi=1"
+  }.property('youtubeId')
+
 });
