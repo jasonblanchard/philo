@@ -39,12 +39,18 @@ Philo.VideoView = Ember.View.extend({
       })(onPlayerReady, onPlayerStateChange);
 
     } else if ( typeof YT.Player === 'function' ) {
-      player = new YT.Player('player', {
-        events: {
-          'onReady': onPlayerReady,
-          'onStateChange': onPlayerStateChange
-        }
-      });
+      (function(onPlayerReady, onPlayerStateChange) {
+        player = new YT.Player('player', {
+          events: {
+            'onReady': onPlayerReady,
+            'onStateChange': onPlayerStateChange
+          }
+        });
+
+        window.onPlayerReady = onPlayerReady;
+        window.onPlayerStateChange = onPlayerStateChange;
+
+      })(onPlayerReady, onPlayerStateChange);
     }
   }
 
