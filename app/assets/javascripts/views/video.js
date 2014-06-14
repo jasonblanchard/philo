@@ -1,22 +1,26 @@
 Philo.VideoView = Ember.View.extend({
 
   didInsertElement: function() {
+    
+    var view = this;
+    var controller = view.get('controller');
+    var router = this.get('controller.target.router');
 
-    window.onPlayerReady = function(event) {
+    var onPlayerReady = function() {
       console.log('ready');
-    }
+      console.log(controller.get('nextVideo'));
+    };
 
-    window.onPlayerStateChange = function(event) {
+    var onPlayerStateChange = function(event) {
       console.log('player state change');
       if (event.data == YT.PlayerState.ENDED) {
         console.log('done');
+        router.transitionTo('video', controller.get('nextVideo'));
       }
-    }
+    };
 
     if ( typeof YT.Player === undefined ) {
-      (function() {
-
-        console.log("creating player");
+      (function(onPlayerReady, onPlayerStateChange) {
 
         var player;
 
@@ -29,17 +33,10 @@ Philo.VideoView = Ember.View.extend({
           });
         }
 
-        window.onPlayerReady = function(event) {
-          console.log('ready');
-        }
+        window.onPlayerReady = onPlayerReady;
+        window.onPlayerStateChange = onPlayerStateChange;
 
-        window.onPlayerStateChange = function(event) {
-          console.log('player state change');
-          if (event.data == YT.PlayerState.ENDED) {
-            console.log('done');
-          }
-        }
-      })();
+      })(onPlayerReady, onPlayerStateChange);
 
     } else if ( typeof YT.Player === 'function' ) {
       player = new YT.Player('player', {
