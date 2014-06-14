@@ -6,9 +6,9 @@ Philo.VideoView = Ember.View.extend({
     var controller = view.get('controller');
     var router = this.get('controller.target.router');
 
-    var onPlayerReady = function() {
+    var onPlayerReady = function(event) {
       console.log('ready');
-      console.log(controller.get('nextVideo'));
+      event.target.playVideo();
     };
 
     var onPlayerStateChange = function(event) {
