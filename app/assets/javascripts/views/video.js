@@ -1,28 +1,54 @@
 Philo.VideoView = Ember.View.extend({
+
   didInsertElement: function() {
-    (function() {
 
-      var player;
+    window.onPlayerReady = function(event) {
+      console.log('ready');
+    }
 
-      window.onYouTubeIframeAPIReady = function() {
-        player = new YT.Player('player', {
-          events: {
-            'onReady': onPlayerReady,
-            'onStateChange': onPlayerStateChange
-          }
-        });
+    window.onPlayerStateChange = function(event) {
+      console.log('player state change');
+      if (event.data == YT.PlayerState.ENDED) {
+        console.log('done');
       }
+    }
 
-      window.onPlayerReady = function(event) {
-        console.log('ready');
-      }
+    if ( typeof YT.Player === undefined ) {
+      (function() {
 
-      window.onPlayerStateChange = function(event) {
-        if (event.data == YT.PlayerState.ENDED) {
-          console.log('done');
+        console.log("creating player");
+
+        var player;
+
+        window.onYouTubeIframeAPIReady = function() {
+          player = new YT.Player('player', {
+            events: {
+              'onReady': onPlayerReady,
+              'onStateChange': onPlayerStateChange
+            }
+          });
         }
-      }
-    })();
+
+        window.onPlayerReady = function(event) {
+          console.log('ready');
+        }
+
+        window.onPlayerStateChange = function(event) {
+          console.log('player state change');
+          if (event.data == YT.PlayerState.ENDED) {
+            console.log('done');
+          }
+        }
+      })();
+
+    } else if ( typeof YT.Player === 'function' ) {
+      player = new YT.Player('player', {
+        events: {
+          'onReady': onPlayerReady,
+          'onStateChange': onPlayerStateChange
+        }
+      });
+    }
   }
 
 });
