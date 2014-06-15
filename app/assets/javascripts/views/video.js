@@ -1,6 +1,8 @@
 Philo.VideoView = Ember.View.extend({
 
   didInsertElement: function() {
+
+    console.log('after insert element');
     
     var view = this;
     var controller = view.get('controller');
@@ -19,38 +21,35 @@ Philo.VideoView = Ember.View.extend({
       }
     };
 
-    if ( typeof YT.Player === undefined ) {
-      (function(onPlayerReady, onPlayerStateChange) {
-
-        var player;
-
-        window.onYouTubeIframeAPIReady = function() {
-          player = new YT.Player('player', {
-            events: {
-              'onReady': onPlayerReady,
-              'onStateChange': onPlayerStateChange
-            }
-          });
-        }
-
-        window.onPlayerReady = onPlayerReady;
-        window.onPlayerStateChange = onPlayerStateChange;
-
-      })(onPlayerReady, onPlayerStateChange);
-
-    } else if ( typeof YT.Player === 'function' ) {
-      (function(onPlayerReady, onPlayerStateChange) {
+    // This path runs on page load
+    (function(onPlayerReady, onPlayerStateChange) {
+      var player;
+      window.onYouTubeIframeAPIReady = function() {
         player = new YT.Player('player', {
           events: {
             'onReady': onPlayerReady,
             'onStateChange': onPlayerStateChange
           }
         });
+      }
+      window.onPlayerReady = onPlayerReady;
+      window.onPlayerStateChange = onPlayerStateChange;
+    })(onPlayerReady, onPlayerStateChange);
 
-        window.onPlayerReady = onPlayerReady;
-        window.onPlayerStateChange = onPlayerStateChange;
+    // After page load, we can re-defined player
+    if ( typeof YT.Player === 'function' ) {
 
-      })(onPlayerReady, onPlayerStateChange);
+      console.log('redefining player');
+
+      player = new YT.Player('player', {
+        events: {
+          'onReady': onPlayerReady,
+          'onStateChange': onPlayerStateChange
+        }
+      });
+
+      window.onPlayerReady = onPlayerReady;
+      window.onPlayerStateChange = onPlayerStateChange;
     }
   }
 
