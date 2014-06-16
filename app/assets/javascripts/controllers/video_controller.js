@@ -10,6 +10,12 @@ Philo.VideoController = Ember.ObjectController.extend({
     return videos.objectAt(index);
   }.property('model'),
 
+  previousVideo: function() {
+    var videos = this.get('controllers.videos');
+    var index = videos.indexOf(this.get('model')) + 1;
+    return videos.objectAt(index);
+  }.property('model'),
+
   youtubeId: function() {
     var mediaUrl = this.get('mediaUrl');
     var id;

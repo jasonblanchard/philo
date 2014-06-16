@@ -12,11 +12,12 @@ Philo.VideoView = Ember.View.extend({
     var view = this;
     var controller = view.get('controller');
     var router = this.get('controller.target.router');
+    var autoplay = controller.get('autoplay');
 
     var onPlayerReady = function(event) {
       console.log('ready');
       event.target.playVideo();
-      if ( (controller.get('autoplay') === true) && (event.target.getDuration() <= 0)  ) {
+      if ( (autoplay === true) && (event.target.getDuration() <= 0)  ) {
         router.transitionTo('video', controller.get('nextVideo'));
       }
     };
@@ -25,7 +26,7 @@ Philo.VideoView = Ember.View.extend({
       console.log('player state change');
       if (event.data == YT.PlayerState.ENDED) {
         console.log('done');
-        if ( controller.get('autoplay') === true ) {
+        if ( autoplay === true ) {
           router.transitionTo('video', controller.get('nextVideo'));
         }
       }
