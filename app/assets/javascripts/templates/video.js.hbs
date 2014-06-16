@@ -10,7 +10,11 @@ Media URL: <a {{bind-attr href="mediaUrl"}} target='_blank'>{{mediaUrl}}</a>
 <br />
 Source URL: <a {{bind-attr href="sourceUrl"}} target='_blank'>{{sourceUrl}}</a>
 <br />
-Up next: {{#link-to 'video' nextVideo}}{{nextVideo.title}}{{/link-to}}
+{{#if nextVideo}}
+  Up next: {{#link-to 'video' nextVideo}}{{nextVideo.title}}{{/link-to}}
+{{/if}}
 <br />
-Previous: {{#link-to 'video' previousVideo}}{{previousVideo.title}}{{/link-to}}
+{{#if previousVideo}}
+  Previous: {{#link-to 'video' previousVideo}}{{previousVideo.title}}{{/link-to}}
+{{/if}}
 
