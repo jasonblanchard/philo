@@ -1,12 +1,10 @@
 Philo.VideoView = Ember.View.extend({
 
-  customInit: function() {
-    console.log('custom init');
+  reinitYoutubePlayer: function() {
     this.initYoutubePlayer();
   }.observes('controller'),
 
   didInsertElement: function() {
-    console.log('after insert element');
     this.initYoutubePlayer();
   },
 
@@ -18,13 +16,18 @@ Philo.VideoView = Ember.View.extend({
     var onPlayerReady = function(event) {
       console.log('ready');
       event.target.playVideo();
+      if ( (controller.get('autoplay') === true) && (event.target.getDuration() <= 0)  ) {
+        router.transitionTo('video', controller.get('nextVideo'));
+      }
     };
 
     var onPlayerStateChange = function(event) {
       console.log('player state change');
       if (event.data == YT.PlayerState.ENDED) {
         console.log('done');
-        router.transitionTo('video', controller.get('nextVideo'));
+        if ( controller.get('autoplay') === true ) {
+          router.transitionTo('video', controller.get('nextVideo'));
+        }
       }
     };
 
@@ -45,8 +48,6 @@ Philo.VideoView = Ember.View.extend({
 
     // After page load, we can re-defined player
     if ( typeof YT.Player === 'function' ) {
-
-      console.log('redefining player');
 
       player = new YT.Player('player', {
         events: {

@@ -1,6 +1,8 @@
 Philo.VideoController = Ember.ObjectController.extend({
 
-  needs: "videos",
+  needs: ["videos", "application"],
+
+  autoplay: Ember.computed.alias('controllers.application.autoplay'),
 
   nextVideo: function() {
     var videos = this.get('controllers.videos');
