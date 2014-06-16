@@ -2,7 +2,7 @@ Philo.VideoView = Ember.View.extend({
 
   reinitYoutubePlayer: function() {
     this.initYoutubePlayer();
-  }.observes('controller'),
+  }.observes('controller', 'controller.autoplay'),
 
   didInsertElement: function() {
     this.initYoutubePlayer();
