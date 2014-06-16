@@ -4,11 +4,13 @@
 <iframe id="player" type="text/html" width="640" height="390" {{bind-attr src="youtubeSrc"}} frameborder="0"></iframe>
 <br />
 <br />
-URL: {{mediaUrl}}
-<br />
 YouTube ID: {{youtubeId}}
 <br />
-Up next >>: {{#link-to 'video' nextVideo}}{{nextVideo.title}}{{/link-to}}
+Media URL: <a {{bind-attr href="mediaUrl"}} target='_blank'>{{mediaUrl}}</a>
 <br />
-Previous <<: {{#link-to 'video' previousVideo}}{{previousVideo.title}}{{/link-to}}
+Source URL: <a {{bind-attr href="sourceUrl"}} target='_blank'>{{sourceUrl}}</a>
+<br />
+Up next: {{#link-to 'video' nextVideo}}{{nextVideo.title}}{{/link-to}}
+<br />
+Previous: {{#link-to 'video' previousVideo}}{{previousVideo.title}}{{/link-to}}
 
