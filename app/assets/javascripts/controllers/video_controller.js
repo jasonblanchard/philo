@@ -19,11 +19,12 @@ Philo.VideoController = Ember.ObjectController.extend({
   youtubeId: function() {
     var mediaUrl = this.get('mediaUrl');
     var id;
-    var regex = /v=([A-Za-z\d-_]*)/
-    if (mediaUrl.match(regex)) {
-      id = mediaUrl.match(regex)[1];
-    } else if (mediaUrl.match(/youtu.be\/([A-Za-z\d]+)/)) {
-      id = mediaUrl.match(/youtu.be\/([A-Za-z\d]+)/)[1];
+    var longRegex = /v=([A-Za-z\d-_]*)/;
+    var shortRegex = /youtu.be\/([A-Za-z\d-_]+)/;
+    if (mediaUrl.match(longRegex)) {
+      id = mediaUrl.match(longRegex)[1];
+    } else if (mediaUrl.match(shortRegex)) {
+      id = mediaUrl.match(shortRegex)[1];
     };
 
     return id;
