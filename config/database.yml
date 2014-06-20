@@ -25,5 +25,6 @@ test:
   database: philo_test
 
 production:
-  <<: *default
-  database: philo_production
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
