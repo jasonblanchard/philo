@@ -46,3 +46,7 @@ gem 'httparty'
 gem "active_model_serializers"
 
 gem 'ember-rails'
+
+group :production do
+  gem 'rails_12factor'
+end
