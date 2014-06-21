@@ -1,7 +1,10 @@
 <h2>{{title}}</h2>
 {{#link-to 'videos'}}All videos{{/link-to}}
 <br />
-<iframe id="player" type="text/html" width="640" height="390" {{bind-attr src="youtubeSrc"}} frameborder="0"></iframe>
+<div class='video-container'>
+  <iframe id="player" type="text/html" width="640" height="390" {{bind-attr src="youtubeSrc"}} frameborder="0"></iframe>
+</div>
+
 <br />
 <br />
 YouTube ID: {{youtubeId}}
