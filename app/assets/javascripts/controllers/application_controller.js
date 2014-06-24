@@ -1,3 +1,4 @@
 Philo.ApplicationController = Ember.Controller.extend({
-  autoplay: true
+  autoplay: true,
+  nsfw: true
 });
