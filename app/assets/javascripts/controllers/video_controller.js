@@ -31,7 +31,7 @@ Philo.VideoController = Ember.ObjectController.extend({
   }.property('mediaUrl'),
 
   youtubeSrc: function() {
-    return "http://www.youtube.com/embed/" + this.get('youtubeId')  + "?enablejsapi=1"
+    return "https://www.youtube.com/embed/" + this.get('youtubeId')  + "?enablejsapi=1"
   }.property('youtubeId')
 
 });
