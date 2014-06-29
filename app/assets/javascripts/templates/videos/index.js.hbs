@@ -4,7 +4,7 @@
 </div>
 {{#each filteredVideos}}
   <div>
-    {{#link-to 'video' this}}{{title}}{{/link-to}} [{{mediaProvider}}] {{#if nsfw}} [nsfw]{{/if}}
+    {{#link-to 'video' this}}{{title}}{{/link-to}} [{{mediaProvider}}] [{{sourceProvider}}] {{#if nsfw}} [nsfw]{{/if}}
   </div>
 {{/each}}
 
