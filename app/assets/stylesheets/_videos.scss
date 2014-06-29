@@ -2,9 +2,10 @@
   position: relative;
   padding-bottom: 56.25%;
   overflow: hidden; 
-  max-width: 80%; 
   height: 80%;
   margin: 0 auto;
+  width: 80%;
+  float: left;
 }
 
 .video-container iframe,
@@ -15,4 +16,14 @@
   left: 0;
   width: 100%;
   height: 80%;
+}
+
+.previous {
+  width: 10%;
+  float: left;
+}
+
+.next {
+  width: 10%;
+  float: right;
 }

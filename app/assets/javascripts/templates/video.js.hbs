@@ -1,23 +1,30 @@
 <h2>{{title}}</h2>
-{{#link-to 'videos'}}All videos{{/link-to}}
 <br />
-<div class='video-container'>
-  <iframe id="player" type="text/html" width="640" height="390" {{bind-attr src="youtubeSrc"}} frameborder="0"></iframe>
+<div class='clearfix'>
+  <div class="previous">
+    {{#link-to 'video' previousVideo}}<div class="arrow-left pull-right"></div>{{/link-to}}
+  </div>
+  <div class='video-container'>
+    <iframe id="player" type="text/html" width="640" height="390" {{bind-attr src="youtubeSrc"}} frameborder="0"></iframe>
+  </div>
+  <div class="next">
+    {{#link-to 'video' nextVideo}}<div class="arrow-right"></div>{{/link-to}}
+  </div>
 </div>
 
-<br />
-<br />
-YouTube ID: {{youtubeId}}
-<br />
-Media URL: <a {{bind-attr href="mediaUrl"}} target='_blank'>{{mediaUrl}}</a>
-<br />
-Source URL: <a {{bind-attr href="sourceUrl"}} target='_blank'>{{sourceUrl}}</a>
-<br />
-{{#if nextVideo}}
-  Up next: {{#link-to 'video' nextVideo}}{{nextVideo.title}}{{/link-to}}
-{{/if}}
-<br />
-{{#if previousVideo}}
-  Previous: {{#link-to 'video' previousVideo}}{{previousVideo.title}}{{/link-to}}
-{{/if}}
-
+<div class='clearfix'>
+  YouTube ID: {{youtubeId}}
+  <br />
+  Media URL: <a {{bind-attr href="mediaUrl"}} target='_blank'>{{mediaUrl}}</a>
+  <br />
+  Source URL: <a {{bind-attr href="sourceUrl"}} target='_blank'>{{sourceUrl}}</a>
+  <br />
+  {{#if nextVideo}}
+    Up next: {{#link-to 'video' nextVideo}}{{nextVideo.title}}{{/link-to}}
+  {{/if}}
+  <br />
+  {{#if previousVideo}}
+    Previous: {{#link-to 'video' previousVideo}}{{previousVideo.title}}{{/link-to}}
+  {{/if}}
+  {{#link-to 'videos'}}All videos{{/link-to}}
+</div>
