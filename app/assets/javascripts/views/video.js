@@ -27,7 +27,9 @@ Philo.VideoView = Ember.View.extend({
       if (event.data == YT.PlayerState.ENDED) {
         console.log('done');
         if ( autoplay === true ) {
-          router.transitionTo('video', controller.get('nextVideo'));
+          setTimeout(function() {
+            router.transitionTo('video', controller.get('nextVideo'));
+          }, 2000);
         }
       }
     };
