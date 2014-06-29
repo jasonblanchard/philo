@@ -4,17 +4,19 @@ Philo.VideoController = Ember.ObjectController.extend({
 
   autoplay: Ember.computed.alias('controllers.application.autoplay'),
 
-  nextVideo: function() {
-    var videos = this.get('controllers.videos');
-    var index = videos.indexOf(this.get('model')) - 1;
-    return videos.objectAt(index);
-  }.property('model'),
+  videos: Ember.computed.alias('controllers.videos.filteredVideos'),
 
   previousVideo: function() {
-    var videos = this.get('controllers.videos');
+    var videos = this.get('videos');
+    var index = videos.indexOf(this.get('model')) - 1;
+    return videos.objectAt(index);
+  }.property('model', 'controllers.videos.filteredVideos'),
+
+  nextVideo: function() {
+    var videos = this.get('videos');
     var index = videos.indexOf(this.get('model')) + 1;
     return videos.objectAt(index);
-  }.property('model'),
+  }.property('model', 'controllers.videos.filteredVideos'),
 
   youtubeId: function() {
     var mediaUrl = this.get('mediaUrl');
