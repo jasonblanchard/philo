@@ -1,8 +1,11 @@
 Philo.IndexController = Ember.ArrayController.extend({
 
+  needs: ['videos'],
+
+  videos: Ember.computed.alias('controllers.videos.filteredVideos'),
+
   firstVideo: function() {
-    // TODO: This isn't really the first video, figure out how to get it from the videosIndex controller
-    return this.get('lastObject');
-  }.property()
+    return this.get('videos').get('firstObject');
+  }.property('controllers.videos.filteredVideos')
 
 });
