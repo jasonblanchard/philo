@@ -1,13 +1,13 @@
 <h1>{{title}} {{#if nsfw}} [nsfw]{{/if}}</h1>
+<div class="previous pull-left">
+  {{#link-to 'video' previousVideo}}previous{{/link-to}}
+</div>
+<div class="next pull-right">
+  {{#link-to 'video' nextVideo}}next{{/link-to}}
+</div>
 <div class='clearfix'>
   <div class='video-container'>
     <iframe id="player" type="text/html" width="640" height="390" {{bind-attr src="youtubeSrc"}} frameborder="0"></iframe>
-  </div>
-  <div class="previous pull-left">
-    {{#link-to 'video' previousVideo}}previous</div>{{/link-to}}
-  </div>
-  <div class="next pull-right">
-    {{#link-to 'video' nextVideo}}next</div>{{/link-to}}
   </div>
 </div>
 
@@ -25,5 +25,4 @@
   {{#if previousVideo}}
     Previous: {{#link-to 'video' previousVideo}}{{previousVideo.title}}{{/link-to}}
   {{/if}}
-  {{#link-to 'videos'}}All videos{{/link-to}}
 </div>
