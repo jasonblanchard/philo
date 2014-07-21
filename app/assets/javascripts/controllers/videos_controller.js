@@ -12,4 +12,5 @@ Philo.VideosController = Ember.ArrayController.extend({
       return videos;
     }
   }.property('@each.model', 'includeNsfw')
+
 });
