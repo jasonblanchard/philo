@@ -53,3 +53,7 @@ end
 
 # HTML5 Video
 gem "mediaelement_rails"
+
+group :test, :development do
+  gem "qunit-rails"
+end
