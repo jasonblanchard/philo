@@ -1,8 +1,11 @@
 <script type="text/x-handlebars">
-  <div class='options pull-right'>
-    {{#link-to 'videos'}}All Videos{{/link-to}}
-    {{input type='checkbox' name='autoplay' checked=autoplay}} Autoplay
-    {{input type='checkbox' name='nsfw' checked=nsfw}} Include nsfw
-  </div>
+  <header class='main-header'>
+    {{pageTitle}}
+    <div class='options pull-right'>
+      {{#link-to 'videos'}}All Videos{{/link-to}}
+      {{input type='checkbox' name='autoplay' checked=autoplay}} Autoplay
+      {{input type='checkbox' name='nsfw' checked=nsfw}} Include nsfw
+      </div>
+  </header>
   {{outlet}}
 </script>

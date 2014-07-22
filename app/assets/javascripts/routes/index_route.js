@@ -5,6 +5,5 @@ Philo.IndexRoute = Ember.Route.extend({
 
   setupController: function(controller, model) {
     controller.set('model', model);
-    this.controllerFor('videos').set('model', model);
   }
 });
