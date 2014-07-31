@@ -50,3 +50,6 @@ gem 'ember-rails'
 group :production do
   gem 'rails_12factor'
 end
+
+# HTML5 Video
+gem "mediaelement_rails"

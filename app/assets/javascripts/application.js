@@ -18,6 +18,7 @@
 //= require ember-data
 //= require_self
 //= require ./philo
+//= require mediaelement_rails
 
 // for more details see: http://emberjs.com/guides/application/
 Philo = Ember.Application.create();

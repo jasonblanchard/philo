@@ -6,7 +6,9 @@
     {{#link-to 'video' nextVideo}}next{{/link-to}}
   </div>
   <div class='video-container'>
-    <iframe id="player" type="text/html" width="640" height="390" {{bind-attr src="youtubeSrc"}} frameborder="0"></iframe>
+    <video width="640" height="360" class="mediaelementize" id='player1' preload="none">
+      <source type="video/youtube" {{bind-attr src="mediaUrl"}} />
+    </video>
   </div>
 </div>
 
