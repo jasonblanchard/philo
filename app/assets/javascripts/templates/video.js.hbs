@@ -5,11 +5,9 @@
   <div class="next pull-right">
     {{#link-to 'video' nextVideo}}next{{/link-to}}
   </div>
-  <div class='video-container'>
-    <video width="640" height="360" class="mediaelementize" id='player1' preload="none">
-      <source type="video/youtube" {{bind-attr src="mediaUrl"}} />
-    </video>
-  </div>
+  
+  {{video-player video=this autoplay=autoplay nextVideo=nextVideo}}
+
 </div>
 
 <div class='clearfix'>
