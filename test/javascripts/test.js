@@ -1,7 +1,4 @@
 module("Integration Tests", {
-  setup: function() {
-    //Ember.run(Philo, Philo.advanceReadiness);
-  },
   teardown: function() {
     Philo.reset();
   }
