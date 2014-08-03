@@ -1,0 +1,23 @@
+<div data-component="navbar" class="clearfix white bg-dark-gray px1">
+  <div class='left'>
+    <div class="bold nav mobile-nav-table nav-big nav-dark">
+      {{pageTitle}}
+    </div>
+  </div>
+  <div class="right">
+    <div class="bold nav nav-big nav-dark">
+      {{#link-to 'videos'}}All Videos{{/link-to}}
+    </div>
+  </div>
+  <div class='right px2 mt1'>
+    {{input type='checkbox' name='autoplay' checked=autoplay}} Autoplay
+    {{input type='checkbox' name='nsfw' checked=nsfw}} Include nsfw
+  </div>
+  <div class='right mt1'>
+    {{outlet loading}}
+  </div>
+</div>
+
+<div class="container px1">
+  {{outlet}}
+</div>
