@@ -10,7 +10,9 @@ Rails.application.routes.draw do
     end
   end
 
-  mount QUnit::Rails::Engine => "/qunit"
+  if Rails.env == 'development'
+    mount QUnit::Rails::Engine => "/qunit"
+  end
 
   get "/*path" => "index#index"
   
