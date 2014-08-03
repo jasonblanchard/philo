@@ -1,11 +1,16 @@
 <script type="text/x-handlebars">
   <header class='main-header clearfix'>
-    {{pageTitle}}
-    <div class='options right'>
-      {{#link-to 'videos'}}All Videos{{/link-to}}
-      {{input type='checkbox' name='autoplay' checked=autoplay}} Autoplay
-      {{input type='checkbox' name='nsfw' checked=nsfw}} Include nsfw
+    <div class='container px2'>
+      {{pageTitle}}
+      <div class='options right'>
+        {{#link-to 'videos'}}All Videos{{/link-to}}
+        {{input type='checkbox' name='autoplay' checked=autoplay}} Autoplay
+        {{input type='checkbox' name='nsfw' checked=nsfw}} Include nsfw
+        </div>
       </div>
   </header>
-  {{outlet}}
+  
+  <div class="container px2">
+    {{outlet}}
+  </div>
 </script>
