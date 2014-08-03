@@ -11,6 +11,7 @@
  * file per style scope.
  *
  *= require_self
+ *= require basscss/basscss
  *= require base
  *= require mediaelement_rails
  */
